@@ -1,0 +1,49 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.GCGAKOR" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+
+        <item name="android:windowBackground">#FFFFFF</item>
+
+        <item name="colorPrimary">#003467</item>
+        <!-- Primary dark color (optional) -->
+        <item name="colorPrimaryDark">#003467</item>
+        <!-- Accent color for buttons and other interactive elements -->
+
+        <!-- Button styles -->
+        <item name="colorButtonNormal">#003467</item>
+        <item name="android:colorButtonNormal">#003467</item>
+    </style>
+
+    <!--    For 2 custom cardview in Tarik Simpanan-->
+
+    <style name="CustomCardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_corners</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay_card_custom_corners" parent="">
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="AnotherCustomCardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">
+            @style/ShapeAppearanceOverlay_another_custom_corner_bottom
+        </item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay_another_custom_corner_bottom" parent="">
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+    </style>
+
+    <!--    !!!!!!!!!!!!    -->
+
+    <style name="Theme.GCGAKOR" parent="Base.Theme.GCGAKOR" />
+</resources>

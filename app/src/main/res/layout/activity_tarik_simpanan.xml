@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.TarikSimpananActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:background="@color/appbar_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:src="@drawable/baseline_arrow_back_ios_new_24" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Tarik Simpanan"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="-80dp"
+        app:cardBackgroundColor="@color/txt_blue"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+
+            <TextView
+                android:id="@+id/tvTotalSimpanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Total"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/spinnerTipeSimpanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_spinner_bg"
+                android:entries="@array/spinner_tipe_simpanan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTotalSimpanan" />
+
+            <TextView
+                android:id="@+id/tvRp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Rp "
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinnerTipeSimpanan" />
+
+            <TextView
+                android:id="@+id/tvNominalSimpananSukarela"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@id/horScrollView"
+                app:layout_constraintStart_toEndOf="@id/tvRp"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerTipeSimpanan" />
+
+
+            <ImageButton
+                android:id="@+id/btnNominalVisibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@null"
+                android:src="@drawable/baseline_visibility_off_24"
+                android:tag="visibleNominal"
+                app:layout_constraintBottom_toBottomOf="@id/tvNominalSimpananSukarela"
+                app:layout_constraintStart_toEndOf="@+id/tvNominalSimpananSukarela"
+                app:layout_constraintTop_toTopOf="@id/tvNominalSimpananSukarela" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="35dp"
+                android:indeterminateDrawable="@drawable/custom_progressbar_white"
+                android:layout_height="35dp"
+                android:layout_marginBottom="13dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/horScrollView"
+                app:layout_constraintStart_toEndOf="@+id/btnNominalVisibility" />
+
+            <HorizontalScrollView
+                android:id="@+id/horScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNominalSimpananSukarela">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <!-- Detail Simpanan Button -->
+                    <Button
+                        android:id="@+id/btnDetailSimpanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:paddingHorizontal="16dp"
+                        android:text="Riwayat Transaksi"
+                        android:textColor="@color/txt_blue" />
+
+                    <Space
+                        android:layout_width="16dp"
+                        android:layout_height="wrap_content" />
+
+                    <!-- Tarik Simpanan Button -->
+                    <Button
+                        android:id="@+id/btnTarikSimpanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:paddingHorizontal="16dp"
+                        android:text="Tarik Simpanan"
+                        android:textColor="@color/txt_blue" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentDetailSimpanan"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardView1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

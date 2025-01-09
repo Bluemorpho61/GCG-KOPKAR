@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.TarikNominalSimpananActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:background="@color/appbar_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_arrow_back_ios_new_24" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Tarik Simpanan"
+                android:textSize="18sp" />
+        </Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--    Cardview Input Nominal -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView1"
+        style="@style/CustomCardViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="-80dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="10dp"
+                android:text="Jumlah"
+                android:textAlignment="center"
+                android:textColor="@color/abu_abu_pinjaman"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="15dp">
+
+                <ImageButton
+                    android:id="@+id/btnKurangiNominal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:src="@drawable/kurangi_pinjaman" />
+
+                <Space
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_extrabold"
+                    android:text="Rp "
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/tvNominalTarikSimpanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_extrabold"
+                    android:text="0"
+                    android:textColor="@color/txt_blue"
+                    android:textSize="24sp" />
+
+                <Space
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/btnTambahNominal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:src="@drawable/tambah_pinjaman" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingVertical="8dp"
+                android:text="Rekomendasi Transaksi"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip100rb"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/chip_background"
+                            android:checkable="true"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Rp. 100.000"
+                            app:checkedIconVisible="false" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip300rb"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/chip_background"
+                            android:checkable="true"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Rp. 300.000"
+                            app:checkedIconVisible="false" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip500rb"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/chip_background"
+                            android:checkable="true"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Rp. 500.000"
+                            app:checkedIconVisible="false" />
+                    </com.google.android.material.chip.ChipGroup>
+                </HorizontalScrollView>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <!-- !!!!!!!!!! -->
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardCatatan"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!--    Card Untuk Catatan Transaksi-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardCatatan"
+        style="@style/AnotherCustomCardViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="93dp"
+        android:layout_marginHorizontal="20dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardView1">
+
+        <LinearLayout
+            android:id="@+id/layoutCatatan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingHorizontal="13dp"
+            android:paddingVertical="10dp">
+
+            <ImageView
+                android:id="@+id/ic_catatan"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/baseline_event_note_24" />
+
+            <EditText
+                android:id="@+id/edtCatatan"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@null"
+                android:hint="Tulis Catatan (opsional)"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <!-- !!!!!!!!!! -->
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        app:cardBackgroundColor="@color/txt_blue"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progressBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp">
+
+            <TextView
+                android:id="@+id/tvTypeSimpanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Total Simpanan Sukarela"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvNominalTipeSimpanan"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Rp 2.000.000"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="16dp"-->
+<!--        android:text="Silahkan Tunggu Proses.... "-->
+<!--        android:fontFamily="@font/poppins_bold"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/cardCatatan"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
+
+    <Button
+        android:id="@+id/btnConfirmTarikSimpanan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:visibility="gone"
+        android:layout_marginTop="30dp"
+        android:text="Tarik Simpanan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardTotal" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

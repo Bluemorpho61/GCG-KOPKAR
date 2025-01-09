@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/custom_spinner_with_arrow.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background shape -->
+    <item>
+        <shape>
+            <solid android:color="#F1F1F1" />
+            <corners android:radius="16dp" />
+            <stroke android:width="1dp" android:color="@color/abu_abu_tombol" />
+        </shape>
+    </item>
+
+    <!-- Arrow icon (positioned to the right) -->
+    <item android:gravity="end|center_vertical">
+        <bitmap android:src="@drawable/downarrow_spinner"/>
+        android:gravity="center_vertical" />
+    </item>
+</layer-list>

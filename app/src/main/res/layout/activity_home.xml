@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.HomeActivity">
+
+
+    <!--    Buat lebar appbar menjadi compatible di semua device-->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/appbar_color"
+        android:paddingHorizontal="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_kopkar_toolbar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imProfile"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="end"
+                android:src="@drawable/baseline_account_circle_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <!--    TODO: FIX CARDVIEW BACKGROUND COLOR -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTotalPinjaman"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:elevation="15dp"
+        app:cardBackgroundColor="@color/txt_blue"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTotalPinjaman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/txt_total_pinjaman"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/forNominal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTotalPinjaman">
+
+                <TextView
+                    android:id="@+id/tvRp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoSizeMaxTextSize="30sp"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeStepGranularity="1sp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/poppins_black"
+                    android:text="Rp "
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/tvNominalPinjaman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoSizeMaxTextSize="30sp"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeStepGranularity="1sp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/poppins_black"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/tvRp"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:autoSizeMaxTextSize="30sp"-->
+            <!--                android:autoSizeMinTextSize="12sp"-->
+            <!--                android:autoSizeStepGranularity="1sp"-->
+            <!--                android:autoSizeTextType="uniform"-->
+            <!--                android:fontFamily="@font/poppins_black"-->
+            <!--                android:text="Rp "-->
+            <!--                android:textColor="@color/white"-->
+            <!--                android:textSize="30sp"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/tvTotalPinjaman" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/tvNominalPinjaman"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:autoSizeMaxTextSize="30sp"-->
+            <!--                android:autoSizeMinTextSize="12sp"-->
+            <!--                android:autoSizeStepGranularity="1sp"-->
+            <!--                android:autoSizeTextType="uniform"-->
+            <!--                android:fontFamily="@font/poppins_black"-->
+            <!--                android:text="0"-->
+            <!--                android:textAlignment="center"-->
+            <!--                android:textColor="@color/white"-->
+            <!--                android:textSize="30sp"-->
+
+            <!--                app:layout_constraintStart_toEndOf="@+id/tvRp"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/tvTotalPinjaman" />-->
+
+            <ImageView
+                android:id="@+id/btnTambahPinjaman"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/baseline_add_circle_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/forNominal" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <!--    Untuk section menu aplikasi-->
+    <LinearLayout
+        android:id="@+id/layoutMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:divider="@color/white"
+        android:dividerPadding="25dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="23dp"
+        android:showDividers="middle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardTotalPinjaman">
+
+
+        <!-- Untuk Card Personal Data-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnPersonalData"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@null"
+                android:src="@drawable/ic_personal_data" />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Personal Data"
+                android:textAlignment="center"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <!-- !!! -->
+
+        <Space
+            android:layout_width="12dp"
+            android:layout_height="wrap_content" />
+        <!--        Untuk Card Pinjaman-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnPinjaman"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@null"
+                android:src="@drawable/ic_pinjaman" />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Pinjaman"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <!--        !!!  -->
+
+        <Space
+            android:layout_width="12dp"
+            android:layout_height="wrap_content" />
+        <!--      Untuk Card History Pinjaman  -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:background="@null"
+                android:src="@drawable/ic_history" />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="History Pinjaman"
+                android:textAlignment="center"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="12dp"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnTarikSimpanan"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:background="@null"
+                android:src="@drawable/ic_tariktunai" />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Tarik Simpanan"
+                android:textAlignment="center"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- !!!  -->
+
+
+    <Space
+        android:id="@+id/pembatasTengah"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutMenu" />
+
+    <TextView
+        android:id="@+id/tvRiwayatTransaksi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins_medium"
+        android:paddingHorizontal="10dp"
+        android:text="Riwayat Transaksi"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pembatasTengah" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRiwayatTransaksi">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRiwayatTransaksiHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/rv_riwayattransaksi_home_card" />
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

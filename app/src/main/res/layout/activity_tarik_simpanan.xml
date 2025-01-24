@@ -72,14 +72,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Spinner
-                android:id="@+id/spinnerTipeSimpanan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_spinner_bg"
-                android:entries="@array/spinner_tipe_simpanan"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTotalSimpanan" />
+<!--            <Spinner-->
+<!--                android:id="@+id/spinnerTipeSimpanan"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/custom_spinner_bg"-->
+<!--                android:entries="@array/spinner_tipe_simpanan"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tvTotalSimpanan" />-->
 
             <TextView
                 android:id="@+id/tvRp"
@@ -90,7 +90,7 @@
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spinnerTipeSimpanan" />
+                app:layout_constraintTop_toBottomOf="@id/tvTotalSimpanan" />
 
             <TextView
                 android:id="@+id/tvNominalSimpananSukarela"
@@ -102,7 +102,7 @@
                 android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@id/horScrollView"
                 app:layout_constraintStart_toEndOf="@id/tvRp"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerTipeSimpanan" />
+                app:layout_constraintTop_toBottomOf="@+id/tvTotalSimpanan" />
 
 
             <ImageButton

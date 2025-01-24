@@ -54,20 +54,25 @@ class PersonalDataViewModel(private val userRepository: UserRepository) : ViewMo
     }
 
 
-    suspend fun getUserImage(mbrid: String) {
+    suspend fun getUserImage(mbrid: String, workspace: String) {
         if (mbrid.isEmpty()) {
             Log.e(TAG, "Unable to use function getUserImage: ${Log.ERROR}")
         } else {
             try {
                 _isLoading.value = true
                 val apiService = ApiConfig.getApiService()
-                val apiCode = "KvRnqbr%2Bktu7HRDvQttp6EuNm8yG06I%2BsB2%2BPg9itk8%3D"
                 val data = mapOf(
-                    "mbrid" to mbrid
+                    "mbrempno" to mbrid,
+                    "workspace" to workspace
                 )
                 val encodedData = ApiNetworkingUtils.jsonFormatter(data)
-                val fullUrl =
-                    "${ApiConfig.BASE_URL_KOPKAR}txn?fnc=runLib;opic=${ApiConfig.API_DEV_CODE_KOPKAR};csn=${ApiConfig.WORKSPACE_CODE_KOPKAR};rc=${apiCode};vars=${encodedData}"
+                val fullUrl = ApiRemoteCode.apiUrlArranger(
+                    ApiConfig.BASE_URL_KOPKAR,
+                    ApiConfig.API_DEV_CODE_KOPKAR,
+                    ApiConfig.WORKSPACE_CODE_KOPKAR,
+                    ApiRemoteCode.GET_USER_IMG,
+                    encodedData
+                )
                 val response = apiService.getImageGambar(fullUrl)
                 _userImageResponse.value = response
             } catch (e: Exception) {

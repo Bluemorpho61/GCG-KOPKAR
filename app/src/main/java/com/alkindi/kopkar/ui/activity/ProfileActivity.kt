@@ -61,8 +61,10 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun getUserProfileImage() {
-        lifecycleScope.launch {
-            profileViewModel.getUserImage("10006")
+        profileViewModel.getSession().observe(this) { res ->
+            lifecycleScope.launch {
+                profileViewModel.getUserImage(res.username, ApiConfig.WORKSPACE_CODE_KOPKAR)
+            }
         }
     }
 
@@ -78,13 +80,13 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun checkFetchedData() {
         profileViewModel.profileDataResponse.observe(this) { resp ->
-            val noHP = resp.data?.telp
-            val namaUser = resp.data?.fname
-            val emailUser = resp.data?.email
+            val noHP = resp.data?.get(0)?.telp.toString()
+            val namaUser = resp.data?.get(0)?.fname.toString()
+            val emailUser = resp.data?.get(0)?.email.toString()
 
-            binding.edtPhone.setText(noHP ?: "Kosong")
-            binding.edtUserName.setText(namaUser ?: "Kosong")
-            binding.edtEmail.setText(emailUser ?: "Kosong")
+            binding.edtPhone.setText(noHP)
+            binding.edtUserName.setText(namaUser)
+            binding.edtEmail.setText(emailUser)
             binding.tvIdUser.text = userID
             extraData = UserProfile(
                 namaUser,
@@ -94,8 +96,6 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         profileViewModel.userImageResponse.observe(this) { res ->
-//            Glide.with(this).load("${ApiConfig.BASE_URL_KOPEGMAR}${res.data}")
-//                .into(binding.imProfile)
             ImageLoaderCustom(binding.imProfile).execute("${ApiConfig.BASE_URL_KOPKAR}${res.data}")
         }
     }

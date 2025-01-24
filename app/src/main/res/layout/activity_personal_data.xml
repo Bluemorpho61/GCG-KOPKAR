@@ -141,7 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
-                    android:text="200583" />
+                    android:text="*Loading" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -167,7 +167,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
-                    android:text="2602293404" />
+                    android:text="*Loading" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -191,7 +191,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:enabled="false"
-                            android:text="Jakarta" />
+                            android:text="*Loading" />
                     </LinearLayout>
 
                     <Space
@@ -215,7 +215,7 @@
                             android:layout_width="120dp"
                             android:layout_height="wrap_content"
                             android:enabled="false"
-                            android:text="17-04-2000" />
+                            android:text="*Loading" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -231,7 +231,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
-                    android:text="Laki-laki" />
+                    android:text="*Loading" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -244,7 +244,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
-                    android:text="Jl. KH. Agus Salim No. 29A Jakarta Pusat. Telepon: 021-31935668. Jl. Hos Cokroaminoto, No. 84, Menteng Jakarta Pusat. " />
+                    android:text="*Loading" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -257,7 +257,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
-                    android:text="089776653562" />
+                    android:text="*Loading" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -270,7 +270,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
-                    android:text="candra123@email.com" />
+                    android:text="*Loading" />
             </LinearLayout>
         </ScrollView>
 

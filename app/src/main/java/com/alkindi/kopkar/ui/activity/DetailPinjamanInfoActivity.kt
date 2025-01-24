@@ -39,56 +39,107 @@ class DetailPinjamanInfoActivity : AppCompatActivity() {
 
     private fun showData() {
         detailPinjamanInfoViewModel.detailHistoryPinjamanInfoResponse.observe(this) { res ->
-            val jasa = res.data?.get(0)?.jasa
-            val danaCair = res.data?.get(0)?.danaCair
-            val mbrid = res.data?.get(0)?.mbrMbrid.toString()
-            val tglTransaksi = res.data?.get(0)?.docDate.toString()
-            val term = res.data?.get(0)?.term.toString()
-            val amount = res.data?.get(0)?.amount
-            val nominalAdministrasi = res.data?.get(0)?.amAdm
+            val tgl = res.data?.get(0)?.docDate.toString()
+            val nominalPinjaman = res.data?.get(0)?.amount.toString()
+            val nominalAdminstrasi = res.data?.get(0)?.amAdm.toString()
+            val jumlahTenor = res.data?.get(0)?.term.toString()
             val tipePotongan = res.data?.get(0)?.loanCode.toString()
-            val namaUser = res.data?.get(0)?.name.toString()
-            val docnum = res.data?.get(0)?.docNum.toString()
-            val tipePinjaman = res.data?.get(0)?.pjmCode.toString()
-            val nominalTotal = res.data?.get(0)?.totAm
-            val nominalAsuransi = res.data?.get(0)?.asuransi
-            val nominalProvisi = res.data?.get(0)?.provisi
-            val nominalPotPri = res.data?.get(0)?.potPribadi
-            val nominalAngsuranBln = res.data?.get(0)?.angsuran
-            val nominalPotongan = res.data?.get(0)?.gaji
+            val persenanAdmin = res.data?.get(0)?.intAdm.toString()
+            val parsedTgl = FormatterAngka.dateFormatForDetail(tgl)
+            val parsedNominalPinjaman =
+                FormatterAngka.formatterAngkaRibuanDouble(nominalPinjaman.toDouble())
+            val parsedNominalJasa =
+                FormatterAngka.formatterAngkaRibuanDouble(nominalAdminstrasi.toDouble())
+            val parsedTenor = FormatterAngka.penghilangNilaiKoma(jumlahTenor)
+            val persenanJasa = res.data?.get(0)?.interest.toString()
+            val angsBln =res.data?.get(0)?.instal.toString()
 
-            binding.tvTipePinjaman.text = tipePinjaman
-            binding.tvNoRef.text = docnum
-            binding.tvNominaJumlahPinjaman.text =
-                FormatterAngka.formatterAngkaRibuanDouble(amount.toString().toDouble())
-            binding.tvNamaMember.text = namaUser
-            binding.tvTgl.text = tglTransaksi
-            binding.tvTipePotongan.text = tipePotongan
-            binding.tvNominalProvinsi.text =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalProvisi.toString().toDouble())
-            binding.tvNominalBiayaAdministrasi.text =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalAdministrasi.toString().toDouble())
-            binding.tvNominalDanaDiterima.text =
-                FormatterAngka.formatterAngkaRibuanDouble(danaCair.toString().toDouble())
-            binding.tvTenor.text = FormatterAngka.penghilangNilaiKoma(term)
-            binding.tvIDMember.text = mbrid
-            binding.tvTipePinjamanInDetail.text = tipePinjaman
-            binding.tvNominalJumlahJasa.text =
-                FormatterAngka.formatterAngkaRibuanDouble(jasa.toString().toDouble())
-            binding.tvNominalProvinsi.text =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalProvisi.toString().toDouble())
-            binding.tvNominalJmlPinjaman.text =
-                FormatterAngka.formatterAngkaRibuanDouble(amount.toString().toDouble())
-            binding.tvNominalPot.text =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalPotongan.toString().toDouble())
-            binding.tvNominalPotPribadi.text =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalPotPri.toString().toDouble())
-            binding.tvNominalTotal.text =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalTotal.toString().toDouble())
-            binding.tvNominalProvinsi.text =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalAsuransi.toString().toDouble())
-            binding.tvAngsuranBln.text =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalAngsuranBln.toString().toDouble())
+            val danaDiterima = res.data?.get(0)?.amount.toString()
+
+
+            when (tipePotongan) {
+                "AUTD" -> {
+                    binding.tvTipePinjaman.text = "Auto Debet"
+                }
+
+                "BAT" -> {
+                    binding.tvTipePinjaman.text = "BAT"
+                }
+
+                "BNS" -> {
+                    binding.tvTipePinjaman.text = "Bonus"
+                }
+
+                "COS" -> {
+                    binding.tvTipePinjaman.text = "COS"
+                }
+
+                "CUTI" -> {
+                    binding.tvTipePinjaman.text = "Cuti"
+                }
+
+                "DIS" -> {
+                    binding.tvTipePinjaman.text = "DIS"
+                }
+
+                "FGS" -> {
+                    binding.tvTipePinjaman.text = "Fungsional"
+                }
+
+                "GAJI" -> {
+                    binding.tvTipePinjaman.text = "Gaji"
+                }
+
+                "GJ13" -> {
+                    binding.tvTipePinjaman.text = "Gaji 13"
+                }
+
+                "INST" -> {
+                    binding.tvTipePinjaman.text = "INSENTIF"
+                }
+
+                "MBL" -> {
+                    binding.tvTipePinjaman.text = "Mobilitas"
+                }
+
+                "PMS" -> {
+                    binding.tvTipePinjaman.text = "PMS"
+                }
+
+                "PPAN" -> {
+                    binding.tvTipePinjaman.text = "Pinjaman Jangka Panjang"
+                }
+
+                "SHF" -> {
+                    binding.tvTipePinjaman.text = "SHIFT"
+                }
+
+                "THR" -> {
+                    binding.tvTipePinjaman.text = "THR"
+                }
+
+                "TNBL" -> {
+                    binding.tvTipePinjaman.text = "Tunai Bulanan"
+                }
+
+                "TNTH" -> {
+                    binding.tvTipePinjaman.text = "Tunai Tahunan"
+                }
+
+                "TRN" -> {
+                    binding.tvTipePinjaman.text = "Transport"
+                }
+            }
+
+            binding.tvTgl.text = parsedTgl
+            binding.tvNoRef.text = res.data?.get(0)?.docNum
+            binding.tvNominaJumlahPinjaman.text = parsedNominalPinjaman
+            binding.tvNominalJasa.text = parsedNominalJasa
+            binding.tvNominalAdministrasi.text = persenanAdmin
+            binding.tvNominalJasa.text = persenanJasa
+            binding.tvNominalDanaDiterima.text = FormatterAngka.formatterNilaiUangIndonesia(danaDiterima.toDouble())
+            binding.tvTenor.text = parsedTenor
+            binding.tvNominalAngsBln.text = FormatterAngka.formatterNilaiUangIndonesia(angsBln.toDouble())
         }
     }
 

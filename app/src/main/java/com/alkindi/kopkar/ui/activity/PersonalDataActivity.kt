@@ -171,7 +171,7 @@ class PersonalDataActivity : AppCompatActivity() {
     private fun getImageData() {
         personalDataViewModel.getSession().observe(this) {
             lifecycleScope.launch {
-                personalDataViewModel.getUserImage(it.username)
+                personalDataViewModel.getUserImage(it.username, ApiConfig.WORKSPACE_CODE_KOPKAR)
                 showImageData()
             }
         }

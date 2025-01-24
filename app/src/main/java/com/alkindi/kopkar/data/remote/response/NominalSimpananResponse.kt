@@ -16,17 +16,11 @@ data class NominalSimpananResponse(
 
 data class DataItem(
 
-	@field:SerializedName("sskq")
-	val sskq: Any? = null,
-
 	@field:SerializedName("sskr")
 	val sskr: Any? = null,
 
-	@field:SerializedName("sskp")
-	val sskp: Any? = null,
-
-	@field:SerializedName("sswj")
-	val sswj: Any? = null,
+	@field:SerializedName("iup")
+	val iup: Any? = null,
 
 	@field:SerializedName("mbrid")
 	val mbrid: String? = null,
@@ -34,9 +28,12 @@ data class DataItem(
 	@field:SerializedName("name")
 	val name: String? = null,
 
-	@field:SerializedName("sspo")
-	val sspo: Any? = null,
-
 	@field:SerializedName("company")
-	val company: String? = null
+	val company: String? = null,
+
+	@field:SerializedName("iuw")
+	val iuw: Any? = null,
+
+	@field:SerializedName("ply")
+	val ply: Any? = null
 )

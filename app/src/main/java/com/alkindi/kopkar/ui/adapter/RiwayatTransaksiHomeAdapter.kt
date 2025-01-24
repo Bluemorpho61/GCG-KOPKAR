@@ -29,33 +29,62 @@ class RiwayatTransaksiHomeAdapter :
             }
 
             when (jenisTransaksi) {
-                "SS" -> {
-                    binding.tvTipeTransaksi.text = "Simpanan Sukarela"
+                "AUTD"->{
+                    binding.tvTipeTransaksi.text ="Auto Debet"
                 }
-
-                "SKP" -> {
-                    binding.tvTipeTransaksi.text = "Simpanan Khusus Pagu"
+                "BAT"->{
+                    binding.tvTipeTransaksi.text ="BAT"
                 }
-
-                "SK" -> {
-                    binding.tvTipeTransaksi.text = "Simpanan Khusus"
+                "BNS"->{
+                    binding.tvTipeTransaksi.text ="Bonus"
                 }
-
-                "JAPAN" -> {
-                    binding.tvTipeTransaksi.text = "Jangka Panjang"
+                "COS"->{
+                    binding.tvTipeTransaksi.text ="COS"
                 }
-
-                "RUMAH"->{
-                    binding.tvTipeTransaksi.text = "Rumah"
+                "CUTI"->{
+                    binding.tvTipeTransaksi.text ="CUTI"
                 }
-                "MOBIL"->{
-                    binding.tvTipeTransaksi.text ="Mobil"
+                "DIS"->{
+                    binding.tvTipeTransaksi.text ="DIS"
                 }
-                "BRANG"->{
-                    binding.tvTipeTransaksi.text ="Kredit Barang"
+                "FGS"->{
+                    binding.tvTipeTransaksi.text ="Fungsional"
                 }
-                "JAPEN"->{
-                    binding.tvTipeTransaksi.text ="Jangka Pendek"
+                "GAJI"->{
+                    binding.tvTipeTransaksi.text ="Gaji"
+                }
+                "GJ13"->{
+                    binding.tvTipeTransaksi.text ="Gaji 13"
+                }
+                "INST"->{
+                    binding.tvTipeTransaksi.text ="Insentif"
+                }
+                "MBL"->{
+                    binding.tvTipeTransaksi.text ="Mobilitas"
+                }
+                "PMS"->{
+                    binding.tvTipeTransaksi.text ="PMS"
+                }
+                "PPAN"->{
+                    binding.tvTipeTransaksi.text ="Pinjaman Jangka Panjang"
+                }
+                "SHF"->{
+                    binding.tvTipeTransaksi.text ="Shift"
+                }
+                "THR"->{
+                    binding.tvTipeTransaksi.text ="THR"
+                }
+                "TNBL"->{
+                    binding.tvTipeTransaksi.text ="Tunai Bulanan"
+                }
+                "TNTH"->{
+                    binding.tvTipeTransaksi.text ="Tunai Tahunan"
+                }
+                "TRN"->{
+                    binding.tvTipeTransaksi.text ="Transport"
+                }
+                "TSS"->{
+                    binding.tvTipeTransaksi.text ="Simpanan Sukarela"
                 }
 
             }

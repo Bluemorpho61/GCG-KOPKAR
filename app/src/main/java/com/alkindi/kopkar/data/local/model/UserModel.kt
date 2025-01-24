@@ -11,7 +11,6 @@ data class UserModel(
 
 @Parcelize
 data class SimpTypeWNominal(
-    val tipeSimpanan: String,
     val nominal: String
 ) : Parcelable
 
@@ -22,9 +21,6 @@ data class PinjDocnum(
 
 @Parcelize
 data class ProcessedTarikSimp(
-    val tipeSimpanan: String?,
-    val nominal: String?,
-    val tglTransaksi: String?,
     val docnum: String?
 ) : Parcelable
 
@@ -46,4 +42,19 @@ data class InputtedBiayaPot(
     val tanggalPencairan: String?,
     val tanggalBonus: String?,
     val nominalPinjaman: String?
+) : Parcelable
+
+
+@Parcelize
+data class ProcessedCalculation(
+    val amp: String,
+    val totam: String,
+    val aminst: String,
+    val amjasa: String,
+    val intadm: String,
+    val amAdm: String,
+    val plafon: String,
+    val nominalPinjaman: String,
+    val tipePotongan: String,
+    val tenor: String
 ) : Parcelable

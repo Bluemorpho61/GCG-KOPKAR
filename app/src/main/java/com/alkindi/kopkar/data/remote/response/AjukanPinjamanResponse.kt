@@ -16,9 +16,12 @@ data class AjukanPinjamanResponse(
 
 data class DataPengajuanPinjaman(
 
+	@field:SerializedName("trans_date")
+	val transDate: String? = null,
+
 	@field:SerializedName("doc_num")
 	val docNum: String? = null,
 
-	@field:SerializedName("company")
-	val company: String? = null
+	@field:SerializedName("doc_date")
+	val docDate: String? = null
 )

@@ -59,4 +59,8 @@ object FormatterAngka {
         return outputFormat.format(date ?: "")
     }
 
+    fun formatterNilaiUangIndonesia(value: Double): String {
+        val numberFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+        return numberFormat.format(value)
+    }
 }

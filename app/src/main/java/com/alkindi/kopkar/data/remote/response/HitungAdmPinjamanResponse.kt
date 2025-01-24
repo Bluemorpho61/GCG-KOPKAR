@@ -8,53 +8,38 @@ data class HitungAdmPinjamanResponse(
 	val code: Int? = null,
 
 	@field:SerializedName("data")
-	val data: AdmPinjamanItem? = null,
+	val data: SmtData? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null
 )
 
-data class AdmPinjamanItem(
+data class Smt(
 
-	@field:SerializedName("tot_pjm")
-	val totPjm: Int? = null,
+	@field:SerializedName("totam")
+	val totam: Any? = null,
 
-	@field:SerializedName("provisi")
-	val provisi: Any? = null,
+	@field:SerializedName("amp")
+	val amp: Any? = null,
 
-	@field:SerializedName("simp_khusus")
-	val simpKhusus: Int? = null,
+	@field:SerializedName("aminst")
+	val aminst: Any? = null,
 
-	@field:SerializedName("adm")
-	val adm: Int? = null,
+	@field:SerializedName("amjasa")
+	val amjasa: Any? = null,
 
-	@field:SerializedName("asuransi")
-	val asuransi: Any? = null,
+	@field:SerializedName("amadm")
+	val amadm: Any? = null,
 
-	@field:SerializedName("angsuran")
-	val angsuran: Any? = null,
+	@field:SerializedName("intadm")
+	val intadm: Any? = null,
 
-	@field:SerializedName("batang")
-	val batang: Any? = null,
+	@field:SerializedName("plafon")
+	val plafon: Any? = null
+)
 
-	@field:SerializedName("maksur")
-	val maksur: Any? = null,
+data class SmtData(
 
-	@field:SerializedName("total")
-	val total: Any? = null,
-
-	@field:SerializedName("minsimp")
-	val minsimp: Any? = null,
-
-	@field:SerializedName("jasa")
-	val jasa: Any? = null,
-
-	@field:SerializedName("dana_cair")
-	val danaCair: Any? = null,
-
-	@field:SerializedName("jas")
-	val jas: Any? = null,
-
-	@field:SerializedName("jasa_totpjm")
-	val jasaTotpjm: Any? = null
+	@field:SerializedName("smt")
+	val smt: Smt? = null
 )

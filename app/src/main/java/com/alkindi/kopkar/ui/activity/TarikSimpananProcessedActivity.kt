@@ -5,15 +5,25 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.alkindi.kopkar.data.local.model.ProcessedTarikSimp
+import com.alkindi.kopkar.data.model.ViewModelFactory
 import com.alkindi.kopkar.databinding.ActivityTarikSimpananProcessedBinding
+import com.alkindi.kopkar.ui.viewmodel.TarikSimpananProcessedViewModel
 import com.alkindi.kopkar.utils.AndroidUIHelper
+import com.alkindi.kopkar.utils.FormatterAngka
+import kotlinx.coroutines.launch
 
 class TarikSimpananProcessedActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTarikSimpananProcessedBinding
+    private val tarikSimpananProcessedViewModel: TarikSimpananProcessedViewModel by viewModels {
+        ViewModelFactory.getInstance(application)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTarikSimpananProcessedBinding.inflate(layoutInflater)
@@ -53,16 +63,27 @@ class TarikSimpananProcessedActivity : AppCompatActivity() {
             )
             Log.e(TAG, "Tidak dapat mengambil data tarik simpanan dari activity sebelumnya")
             finish()
+            return
         }
+        fetchPullTransactionInfo(tarikSimpInfo.docnum!!)
+        observeFetchedData()
+    }
 
-        binding.tvNominalYangDitarik.text = tarikSimpInfo!!.nominal
-        binding.tvTglTransaksi.text =tarikSimpInfo.tglTransaksi
-        binding.tvDocnum.text =tarikSimpInfo.docnum
+    private fun observeFetchedData() {
+        tarikSimpananProcessedViewModel.tarikSimpananProcessed.observe(this) { res ->
+            val nominalPenarikanSimpanan = res.data?.amount.toString()
 
-        when(tarikSimpInfo.tipeSimpanan){
-            "SS" -> {binding.tvTipeSimpanan.text = "Simpanan Sukarela"}
-            "SK" ->{binding.tvTipeSimpanan.text ="Simpanan Khusus"}
-            "SKP" ->{binding.tvTipeSimpanan.text ="Simpanan Khusus Pagu"}
+            binding.tvTipeSimpanan.text = "Simpanan Sukarela"
+            binding.tvDocnum.text = res.data?.docNum
+            binding.tvNominalYangDitarik.text =
+                FormatterAngka.formatterNilaiUangIndonesia(nominalPenarikanSimpanan.toDouble())
+            binding.tvTglTransaksi.text = res.data?.transDate.toString()
+        }
+    }
+
+    private fun fetchPullTransactionInfo(docnum: String) {
+        lifecycleScope.launch {
+            tarikSimpananProcessedViewModel.getPullTransactionInfo(docnum)
         }
     }
 

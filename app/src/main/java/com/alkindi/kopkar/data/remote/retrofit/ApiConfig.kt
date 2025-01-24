@@ -6,7 +6,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.security.SecureRandom
-import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
 import javax.net.ssl.SSLContext
 import javax.net.ssl.SSLSocketFactory
@@ -15,8 +14,8 @@ import javax.net.ssl.X509TrustManager
 
 object ApiConfig {
     const val BASE_URL_KOPKAR = "https://kopkarjict.com/"
-    const val API_DEV_CODE_KOPKAR = "kcNx4zuBqLMJmkDj52TkQw"
-    const val WORKSPACE_CODE_KOPKAR = "JICTAKORPRO"
+    const val API_DEV_CODE_KOPKAR = "6t0KxJnF8gYJmkDj52TkQw"
+    const val WORKSPACE_CODE_KOPKAR = "JICTAKORDEV"
     fun getApiService(): ApiService {
 
         val gson = GsonBuilder()
@@ -60,44 +59,3 @@ object ApiConfig {
     }
 }
 
-object UnsafeOkHttpClient {
-    fun getUnsafeOkHttpClient(): OkHttpClient {
-        return try {
-            val trustAllCerts = arrayOf<TrustManager>(
-                object : X509TrustManager {
-                    @Throws(CertificateException::class)
-                    override fun checkClientTrusted(
-                        chain: Array<out java.security.cert.X509Certificate>,
-                        authType: String
-                    ) {
-                    }
-
-                    @Throws(CertificateException::class)
-                    override fun checkServerTrusted(
-                        chain: Array<out java.security.cert.X509Certificate>,
-                        authType: String
-                    ) {
-                    }
-
-                    override fun getAcceptedIssuers(): Array<java.security.cert.X509Certificate> =
-                        arrayOf()
-                }
-            )
-
-            // Install the all-trusting trust manager
-            val sslContext = SSLContext.getInstance("SSL")
-            sslContext.init(null, trustAllCerts, SecureRandom())
-
-            // Create an ssl socket factory with our all-trusting manager
-            val sslSocketFactory: SSLSocketFactory = sslContext.socketFactory
-
-            val builder = OkHttpClient.Builder()
-            builder.sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
-            builder.hostnameVerifier { _, _ -> true }
-
-            builder.build()
-        } catch (e: Exception) {
-            throw RuntimeException(e)
-        }
-    }
-}

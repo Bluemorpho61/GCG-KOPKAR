@@ -42,6 +42,9 @@ class RiwayatTransaksiAdapter :
                 "SP" -> {
                     binding.tvSukarela.text = "Simpanan Pokok"
                 }
+                "TSS" ->{
+                    binding.tvSukarela.text ="Simpanan Sukarela"
+                }
 
                 else -> "Unknown"
             }

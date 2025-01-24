@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alkindi.kopkar.data.model.ViewModelFactory
 import com.alkindi.kopkar.databinding.FragmentDetailSimpananBinding
 import com.alkindi.kopkar.ui.adapter.DetailSimpananAdapter
 import com.alkindi.kopkar.ui.viewmodel.DetailSimpananFragmentViewModel
 import com.alkindi.kopkar.utils.AndroidUIHelper
+import kotlinx.coroutines.launch
 
 
 class DetailSimpananFragment : Fragment() {
@@ -45,22 +47,8 @@ class DetailSimpananFragment : Fragment() {
 
     private fun getRVData() {
         detailSimpananFragmentViewModel.getSession().observe(viewLifecycleOwner) {
-            when (selectedValue) {
-                "Simpanan Khusus" -> {
-                    detailSimpananFragmentViewModel.getDetailSimpananData(it.username, "SK")
-                }
-                "Simpanan Sukarela"->{
-                    detailSimpananFragmentViewModel.getDetailSimpananData(it.username,"SS")
-                }
-                "Simpanan Khusus Pagu"->{
-                    detailSimpananFragmentViewModel.getDetailSimpananData(it.username,"SKP")
-                }
-                "Simpanan Pokok"->{
-                    detailSimpananFragmentViewModel.getDetailSimpananData(it.username,"SP")
-                }
-                "Simpanan Wajib"->{
-                    detailSimpananFragmentViewModel.getDetailSimpananData(it.username,"SW")
-                }
+            lifecycleScope.launch {
+                detailSimpananFragmentViewModel.getDetailSimpananData(it.username)
             }
         }
     }

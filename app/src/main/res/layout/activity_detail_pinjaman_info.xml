@@ -179,7 +179,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="50.000.000"
+                                android:text="@string/loading"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -197,27 +197,19 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="Administrasi"
+                                android:text="Jasa"
                                 android:textColor="@color/abu_abu_total_pinjaman"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/blackBorder1" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="Rp "
-                                android:textColor="@color/abu_abu_total_pinjaman"
-                                app:layout_constraintEnd_toStartOf="@+id/tvNominalBiayaAdministrasi"
-                                app:layout_constraintTop_toBottomOf="@id/blackBorder1"
-                                tools:layout_editor_absoluteY="5dp" />
+
 
                             <TextView
-                                android:id="@+id/tvNominalBiayaAdministrasi"
+                                android:id="@+id/tvNominalJasa"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="100.000"
+                                android:text="@string/loading"
                                 android:textColor="@color/abu_abu_total_pinjaman"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/blackBorder1" />
@@ -229,33 +221,25 @@
                                 android:background="@android:color/darker_gray"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/tvNominalBiayaAdministrasi" />
+                                app:layout_constraintTop_toBottomOf="@id/tvNominalJasa" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="Asuransi"
+                                android:text="Admin"
                                 android:textColor="@color/abu_abu_total_pinjaman"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/blackBorder2" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="Rp "
-                                android:textColor="@color/abu_abu_total_pinjaman"
-                                app:layout_constraintEnd_toStartOf="@+id/tvNominalAsuransi"
-                                app:layout_constraintTop_toBottomOf="@id/blackBorder2"
-                                tools:layout_editor_absoluteY="5dp" />
+
 
                             <TextView
-                                android:id="@+id/tvNominalAsuransi"
+                                android:id="@+id/tvNominalAdministrasi"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="675.000"
+                                android:text="@string/loading"
                                 android:textColor="@color/abu_abu_total_pinjaman"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/blackBorder2" />
@@ -265,311 +249,101 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
                                 android:background="@android:color/darker_gray"
-                                app:layout_constraintTop_toBottomOf="@id/tvNominalAsuransi" />
+                                app:layout_constraintTop_toBottomOf="@id/tvNominalAdministrasi" />
+
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="Provinsi"
+                                android:text="Angs"
                                 android:textColor="@color/abu_abu_total_pinjaman"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/blackBorder3" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="Rp "
-                                android:textColor="@color/abu_abu_total_pinjaman"
-                                app:layout_constraintEnd_toStartOf="@+id/tvNominalProvinsi"
-                                app:layout_constraintTop_toBottomOf="@id/blackBorder3"
-                                tools:layout_editor_absoluteY="5dp" />
+                            <!--                            <TextView-->
+                            <!--                                android:layout_width="wrap_content"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:fontFamily="@font/poppins_medium"-->
+                            <!--                                android:text="Rp "-->
+                            <!--                                android:textColor="@color/abu_abu_total_pinjaman"-->
+                            <!--                                app:layout_constraintEnd_toStartOf="@+id/tvNominalAngsBln"-->
+                            <!--                                app:layout_constraintTop_toBottomOf="@id/blackBorder3"-->
+                            <!--                                tools:layout_editor_absoluteY="5dp" />-->
 
                             <TextView
-                                android:id="@+id/tvNominalProvinsi"
+                                android:id="@+id/tvNominalAngsBln"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="500.000"
+                                android:text="@string/loading"
                                 android:textColor="@color/abu_abu_total_pinjaman"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/blackBorder3" />
+
 
                             <View
-                                android:id="@+id/blackBorder4"
+                                android:id="@+id/blackBorder5"
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
-                                android:background="@android:color/black"
+                                android:background="@android:color/darker_gray"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/tvNominalProvinsi" />
+                                app:layout_constraintTop_toBottomOf="@id/tvNominalAngsBln" />
 
                             <TextView
-                                android:id="@+id/textView10"
+                                android:id="@+id/tvTenorLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="Tenor"
+                                android:textColor="@color/abu_abu_total_pinjaman"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/blackBorder5" />
+
+                            <TextView
+                                android:id="@+id/tvTenor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="14"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/blackBorder5" />
+
+                            <View
+                                android:id="@+id/blackBorder6"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/black"
+                                app:layout_constraintTop_toBottomOf="@id/tvTenorLabel" />
+
+                            <TextView
+                                android:id="@+id/textView11"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins_medium"
                                 android:text="Dana Diterima"
-                                android:textColor="#000000"
+                                android:textColor="@color/black"
                                 android:textSize="15sp"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/blackBorder4" />
+                                app:layout_constraintTop_toBottomOf="@id/blackBorder6" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Rp "
-                                android:textColor="#000000"
-                                android:textSize="15sp"
-                                app:layout_constraintEnd_toStartOf="@id/tvNominalDanaDiterima"
-                                app:layout_constraintTop_toBottomOf="@id/blackBorder4" />
+
 
                             <TextView
                                 android:id="@+id/tvNominalDanaDiterima"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="48.275.000"
-                                android:textColor="#000000"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="500000"
+                                android:textColor="@color/black"
                                 android:textSize="15sp"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/blackBorder4" />
+                                app:layout_constraintTop_toBottomOf="@id/blackBorder6" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="10dp"
-                    android:paddingVertical="10dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="8dp">
-
-                        <TextView
-                            android:id="@+id/textView12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="ID Member"
-                            android:textColor="@color/abu_abu_total_pinjaman"
-                            android:textSize="15sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/tvIDMember"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="10006"
-                            android:textSize="15sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/textView13"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Nama Member"
-                            android:textColor="@color/abu_abu_total_pinjaman"
-                            android:textSize="15sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvIDMember" />
-
-                        <TextView
-                            android:id="@+id/tvNamaMember"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/poppins_medium"
-                            android:maxLines="1"
-                            android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, distinctio."
-                            android:textSize="15sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textView13"
-                            app:layout_constraintTop_toBottomOf="@id/tvIDMember" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Tipe Pinjaman"
-                            android:textColor="@color/abu_abu_total_pinjaman"
-                            android:textSize="15sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvNamaMember" />
-
-                        <TextView
-                            android:id="@+id/tvTipePinjamanInDetail"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="JAPAN"
-                            android:textSize="15sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvNamaMember" />
-
-                        <TextView
-                            android:id="@+id/textView14"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Tipe Potongan"
-                            android:textColor="@color/abu_abu_total_pinjaman"
-                            android:textSize="15sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvTipePinjamanInDetail" />
-
-                        <TextView
-                            android:id="@+id/tvTipePotongan"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="GAJI"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvTipePinjamanInDetail" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Nominal T.Pot"
-                            android:textColor="@color/abu_abu_total_pinjaman"
-                            android:textSize="15sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-                        <TextView
-                            android:id="@+id/tvNominalPot"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="12.000.000"
-                            android:textColor="@color/abu_abu_total_pinjaman"
-                            android:textSize="15sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvTipePotongan" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Pot. Pribadi"
-                            android:textColor="@color/abu_abu_total_pinjaman"
-                            android:textSize="15sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvNominalPot" />
-
-                        <TextView
-                            android:id="@+id/tvNominalPotPribadi"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2.000.000"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvNominalPot" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Jumlah Pinjaman"
-                            android:textColor="@color/abu_abu_total_pinjaman"
-                            android:textSize="15sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvNominalPotPribadi" />
-
-                        <TextView
-                            android:id="@+id/tvNominalJmlPinjaman"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="50.000.000"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvNominalPotPribadi" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Tenor"
-                            android:textColor="@color/abu_abu_total_pinjaman"
-                            android:textSize="15sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvNominalJmlPinjaman" />
-
-                        <TextView
-                            android:id="@+id/tvTenor"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="36"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvNominalJmlPinjaman" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Jumlah Jasa"
-                            android:textColor="#000000"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvTenor" />
-
-                        <TextView
-                            android:id="@+id/tvNominalJumlahJasa"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="15.750.000"
-                            android:textColor="#000000"
-                            android:textSize="15sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvTenor" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Total"
-                            android:textColor="#000000"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvNominalJumlahJasa" />
-
-                        <TextView
-                            android:id="@+id/tvNominalTotal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="65.750.000"
-                            android:textColor="#000000"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvNominalJumlahJasa" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Amgsuran/Bln"
-                            android:textColor="#000000"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvNominalTotal" />
-
-                        <TextView
-                            android:id="@+id/tvAngsuranBln"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="1.826.389"
-                            android:textColor="#000000"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvNominalTotal" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
             </LinearLayout>
         </ScrollView>
 

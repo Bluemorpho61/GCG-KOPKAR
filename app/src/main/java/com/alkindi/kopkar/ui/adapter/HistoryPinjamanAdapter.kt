@@ -21,6 +21,7 @@ class HistoryPinjamanAdapter :
             val statusPinjaman = item.aprinfo.toString().first()
             val fetchedNominalGaji = item.amount.toString()
             val fetchedNominalPinjamanBulanan = item.remain.toString()
+            val tipePotPinjaman =item.loanCode
             val formattedNominalGaji =
                 FormatterAngka.formatterAngkaRibuanDouble(fetchedNominalGaji.toDouble())
             val formattedNominalPinjamanBulanan =
@@ -33,7 +34,66 @@ class HistoryPinjamanAdapter :
             }
             val formattedTenor = FormatterAngka.penghilangNilaiKoma(item.term.toString())
             binding.tvNominalPinjamanBulanan.text = formattedNominalPinjamanBulanan
-            binding.tvPinjamanBulanan.text = item.pjmCode
+
+            when(tipePotPinjaman){
+                "AUTD"->{
+                    binding.tvPinjamanBulanan.text ="Auto Debet"
+                }
+                "BAT"->{
+                    binding.tvPinjamanBulanan.text ="BAT"
+                }
+                "BNS"->{
+                    binding.tvPinjamanBulanan.text ="Bonus"
+                }
+                "COS"->{
+                    binding.tvPinjamanBulanan.text ="COS"
+                }
+                "CUTI"->{
+                    binding.tvPinjamanBulanan.text ="CUTI"
+                }
+                "DIS"->{
+                    binding.tvPinjamanBulanan.text ="DIS"
+                }
+                "FGS"->{
+                    binding.tvPinjamanBulanan.text ="Fungsional"
+                }
+                "GAJI"->{
+                    binding.tvPinjamanBulanan.text ="Gaji"
+                }
+                "GJ13"->{
+                    binding.tvPinjamanBulanan.text ="Gaji 13"
+                }
+                "INST"->{
+                    binding.tvPinjamanBulanan.text ="Insentif"
+                }
+                "MBL"->{
+                    binding.tvPinjamanBulanan.text ="Mobilitas"
+                }
+                "PMS"->{
+                    binding.tvPinjamanBulanan.text ="PMS"
+                }
+                "PPAN"->{
+                    binding.tvPinjamanBulanan.text ="Pinjaman Jangka Panjang"
+                }
+                "SHF"->{
+                    binding.tvPinjamanBulanan.text ="Shift"
+                }
+                "THR"->{
+                    binding.tvPinjamanBulanan.text ="THR"
+                }
+                "TNBL"->{
+                    binding.tvPinjamanBulanan.text ="Tunai Bulanan"
+                }
+                "TNTH"->{
+                    binding.tvPinjamanBulanan.text ="Tunai Tahunan"
+                }
+                "TRN"->{
+                    binding.tvPinjamanBulanan.text ="Transport"
+                }
+                "TSS"->{
+                    binding.tvPinjamanBulanan.text ="Simpanan Sukarela"
+                }
+            }
             binding.tvNominalGaji.text = formattedNominalGaji
             binding.tvSisaTenor.text = formattedTenor
             with(itemView) {

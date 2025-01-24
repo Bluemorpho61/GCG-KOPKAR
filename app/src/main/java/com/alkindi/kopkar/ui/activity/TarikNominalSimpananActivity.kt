@@ -20,15 +20,12 @@ import com.alkindi.kopkar.ui.viewmodel.TarikNominalSimpananViewModel
 import com.alkindi.kopkar.utils.AndroidUIHelper
 import com.alkindi.kopkar.utils.FormatterAngka
 import com.google.android.material.chip.Chip
-import java.text.SimpleDateFormat
-import java.util.Date
 
 class TarikNominalSimpananActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTarikNominalSimpananBinding
     private lateinit var userMBRID: String
-    private lateinit var tipeTransaksi: String
     private lateinit var extraData: ProcessedTarikSimp
-
+    private var transDocnum: String = ""
 
     private val tarikNominalSimpananViewModel: TarikNominalSimpananViewModel by viewModels {
         ViewModelFactory.getInstance(application)
@@ -71,18 +68,16 @@ class TarikNominalSimpananActivity : AppCompatActivity() {
     private fun getTarikSimpananAPIResponse() {
         tarikNominalSimpananViewModel.tarikNominalSimpananResponse.observe(this) { res ->
             if (res.code == 200) {
-//                docnum = res.docnum!!
+                val docnum = res.data!!.docNum
                 AndroidUIHelper.showWarningToastShort(this, "Tarik Simpanan Berhasil")
-                ProcessedTarikSimp(
-                    "",
-                    "",
-                    "",
-                    res.docnum.toString()
-                )
+                extraData = ProcessedTarikSimp(docnum)
                 val toConfirmPage = Intent(
                     this@TarikNominalSimpananActivity,
                     TarikSimpananProcessedActivity::class.java
-                ).putExtra(TarikSimpananProcessedActivity.EXTRA_PROCESSED_TARIK_SIMP, extraData)
+                ).apply {
+                    putExtra(TarikSimpananProcessedActivity.EXTRA_PROCESSED_TARIK_SIMP, extraData)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                }
                 startActivity(toConfirmPage)
             } else {
                 AndroidUIHelper.showAlertDialog(
@@ -117,43 +112,54 @@ class TarikNominalSimpananActivity : AppCompatActivity() {
     private fun confirmTarikSimpanan() {
         val nominal = binding.tvNominalTarikSimpanan.text.toString()
         val convertedNominal = FormatterAngka.formatterRibuanKeInt(nominal)
-        val tipeSimpanan = binding.tvTypeSimpanan.text
-        val catatanTransaksi = binding.edtCatatan.text.toString()
-        val simpananYgTersedia = binding.tvNominalTipeSimpanan.text.toString()
-        val convertedNominalYgTersedia = FormatterAngka.formatterRibuanKeInt(simpananYgTersedia)
-        val tglSaatIni = Date()
-        val dateFormatter = SimpleDateFormat("dd-MM-yyyy")
-        val formattedDate = dateFormatter.format(tglSaatIni)
-        when (tipeSimpanan) {
-            "Simpanan Sukarela" -> {
-                tipeTransaksi = "SS"
-                Log.d(TAG, "Tipe Simpanan: $tipeSimpanan")
-            }
-
-            "Simpanan Khusus" -> {
-                tipeTransaksi = "SK"
-                Log.d(TAG, "Tipe Simpanan: $tipeSimpanan")
-            }
-
-            "Simpanan Khusus Pagu" -> {
-                tipeTransaksi = "SKP"
-                Log.d(TAG, "Tipe Simpanan: $tipeSimpanan")
-            }
-        }
+        val simpananTersedia = binding.tvNominalTipeSimpanan.text.toString()
+        val convertedSimptersedia = FormatterAngka.formatterRibuanKeInt(simpananTersedia)
+        val catatan = binding.edtCatatan.text.toString()
         tarikNominalSimpananViewModel.tarikNominalSimpanan(
             userMBRID,
             convertedNominal.toString(),
-            catatanTransaksi,
-            tipeTransaksi,
-            convertedNominalYgTersedia.toString(),
-            formattedDate
+            catatan,
+            convertedSimptersedia.toString()
         )
-        extraData = ProcessedTarikSimp(
-            tipeTransaksi,
-            nominal,
-            formattedDate,
-            ""
-        )
+//        val nominal = binding.tvNominalTarikSimpanan.text.toString()
+//        val convertedNominal = FormatterAngka.formatterRibuanKeInt(nominal)
+//        val tipeSimpanan = binding.tvTypeSimpanan.text
+//        val catatanTransaksi = binding.edtCatatan.text.toString()
+//        val simpananYgTersedia = binding.tvNominalTipeSimpanan.text.toString()
+//        val convertedNominalYgTersedia = FormatterAngka.formatterRibuanKeInt(simpananYgTersedia)
+//        val tglSaatIni = Date()
+//        val dateFormatter = SimpleDateFormat("dd-MM-yyyy")
+//        val formattedDate = dateFormatter.format(tglSaatIni)
+//        when (tipeSimpanan) {
+//            "Simpanan Sukarela" -> {
+//                tipeTransaksi = "SS"
+//                Log.d(TAG, "Tipe Simpanan: $tipeSimpanan")
+//            }
+//
+//            "Simpanan Khusus" -> {
+//                tipeTransaksi = "SK"
+//                Log.d(TAG, "Tipe Simpanan: $tipeSimpanan")
+//            }
+//
+//            "Simpanan Khusus Pagu" -> {
+//                tipeTransaksi = "SKP"
+//                Log.d(TAG, "Tipe Simpanan: $tipeSimpanan")
+//            }
+//        }
+//        tarikNominalSimpananViewModel.tarikNominalSimpanan(
+//            userMBRID,
+//            convertedNominal.toString(),
+//            catatanTransaksi,
+//            tipeTransaksi,
+//            convertedNominalYgTersedia.toString(),
+//            formattedDate
+//        )
+//        extraData = ProcessedTarikSimp(
+//            tipeTransaksi,
+//            nominal,
+//            formattedDate,
+//            ""
+//        )
     }
 
     private fun getDataFromPreviousActivity() {
@@ -163,22 +169,37 @@ class TarikNominalSimpananActivity : AppCompatActivity() {
                 SimpTypeWNominal::class.java
             )
         } else {
-            @Suppress("DEPRECATION")
+            @Suppress
             intent.getParcelableExtra(EXTRA_SIMP_TYPE)
         }
-
         if (simpData == null) {
-            AndroidUIHelper.showAlertDialog(
-                this,
-                "Error",
-                "Tidak dapat melanjutkan tarik simpanan. Silahkan coba beberapa saat lagi"
-            )
-            Log.e(TAG, "Data dari intent sebelumnya tidak dapat ditemukan")
+            AndroidUIHelper.showAlertDialog(this, "Error", "Tidak dapat melanjutkan tarik simpanan")
+            Log.e(TAG, "Data dari intent sebelumnya tdk ditemukan")
             finish()
         }
-
-        binding.tvNominalTipeSimpanan.text = simpData!!.nominal ?: "Data is null"
-        binding.tvTypeSimpanan.text = simpData.tipeSimpanan ?: "Data is null"
+        binding.tvNominalTipeSimpanan.text = simpData!!.nominal
+//        val simpData = if (Build.VERSION.SDK_INT >= 33) {
+//            intent.getParcelableExtra<SimpTypeWNominal>(
+//                EXTRA_SIMP_TYPE,
+//                SimpTypeWNominal::class.java
+//            )
+//        } else {
+//            @Suppress("DEPRECATION")
+//            intent.getParcelableExtra(EXTRA_SIMP_TYPE)
+//        }
+//
+//        if (simpData == null) {
+//            AndroidUIHelper.showAlertDialog(
+//                this,
+//                "Error",
+//                "Tidak dapat melanjutkan tarik simpanan. Silahkan coba beberapa saat lagi"
+//            )
+//            Log.e(TAG, "Data dari intent sebelumnya tidak dapat ditemukan")
+//            finish()
+//        }
+//
+//        binding.tvNominalTipeSimpanan.text = simpData!!.nominal ?: "Data is null"
+//        binding.tvTypeSimpanan.text = simpData.tipeSimpanan ?: "Data is null"
     }
 
     private fun chipButtonLogic() {

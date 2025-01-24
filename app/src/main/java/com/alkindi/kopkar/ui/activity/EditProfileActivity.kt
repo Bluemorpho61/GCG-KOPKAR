@@ -59,7 +59,7 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     private fun showUserImage() {
-        editProfileViewModel.userImageResponse.observe(this) {res->
+        editProfileViewModel.userImageResponse.observe(this) { res ->
             ImageLoaderCustom(binding.imProfile).execute("${ApiConfig.BASE_URL_KOPKAR}${res.data}")
         }
 
@@ -68,7 +68,7 @@ class EditProfileActivity : AppCompatActivity() {
     private fun getImage() {
         editProfileViewModel.getSession().observe(this) {
             lifecycleScope.launch {
-                editProfileViewModel.getUserImage(it.username)
+                editProfileViewModel.getUserImage(it.username, ApiConfig.WORKSPACE_CODE_KOPKAR)
             }
         }
     }

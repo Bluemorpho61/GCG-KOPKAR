@@ -26,44 +26,33 @@ class TarikNominalSimpananViewModel(private val userRepository: UserRepository) 
         mbrid: String,
         nominalSimpanan: String,
         catatan: String?,
-        tipeSimpanan: String,
         simpananYgTersedia: String,
-        transDate: String
-    ) {
-        if (nominalSimpanan.isEmpty() && tipeSimpanan.isEmpty()) {
-            Log.e(TAG, "Failed to make a tarik simpnanan request")
-            return
-        } else {
-            val argl = """{
-                    "mbrid":"$mbrid",
-                    "trans_date":"$transDate",
+
+        ) {
+
+        val argl = """{
+                    "user_empno":"$mbrid",
                     "amount":"$nominalSimpanan",
-                    "doc_date":"$transDate",
-                    "stp":"$tipeSimpanan",
                     "txn_amount":"$simpananYgTersedia",
                     "ket":"$catatan"
                     }""".trimIndent()
-            try {
-                _isLoading.value = true
+        try {
+            _isLoading.value = true
 
-//                val responseCode =
-//                    "NU5mgOhAZUGhJ24WH1zuqwTnRtBFfK6y6OVw0Q2/ZWSE2T%2BDBSLsen/SgBttLGZS"
-//                "${ApiConfig.BASE_URL_KOPEGMAR}txn?fnc=runLib;opic=${ApiConfig.API_DEV_CODE_KOPEGMAR};csn=${ApiConfig.WORKSPACE_CODE_KOPEGMAR};rc=${responseCode}"
-                Log.d(
-                    TAG,
-                    "Data yang dimasukkan: (MBRID: $mbrid, nominal yg ditarik: $nominalSimpanan, catatan: $catatan, tipe simpanan: $tipeSimpanan, simpanan yang tersedia: $simpananYgTersedia, transDate: $transDate)"
-                )
-                viewModelScope.launch {
+            Log.d(
+                TAG,
+                "Data yang dimasukkan: (MBRID: $mbrid, nominal yg ditarik: $nominalSimpanan, catatan: $catatan, simpanan yang tersedia: $simpananYgTersedia)"
+            )
+            viewModelScope.launch {
 
-                    val response = ApiConfig.getApiService().postTarikSimpanan(argl = argl)
-                    _tarikNominalSimpananResponse.value = response
-                }
-            } catch (e: Exception) {
-                Log.e(TAG, "Failed to make a tarik simpnanan request ${e.message}")
-                e.printStackTrace()
-            } finally {
-                _isLoading.value = false
+                val response = ApiConfig.getApiService().postTarikSimpanan(argl = argl)
+                _tarikNominalSimpananResponse.value = response
             }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to make a tarik simpnanan request ${e.message}")
+            e.printStackTrace()
+        } finally {
+            _isLoading.value = false
         }
     }
 

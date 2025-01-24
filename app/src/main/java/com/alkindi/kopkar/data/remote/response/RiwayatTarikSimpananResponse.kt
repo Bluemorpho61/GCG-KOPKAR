@@ -17,10 +17,7 @@ data class RiwayatTarikSimpananResponse(
 data class RiwayatTarikSimpananItem(
 
     @field:SerializedName("createdinfo")
-    val createdinfo: Any? = null,
-
-    @field:SerializedName("inct_code")
-    val inctCode: String? = null,
+    val createdinfo: String? = null,
 
     @field:SerializedName("trans_date")
     val transDate: String? = null,
@@ -28,11 +25,11 @@ data class RiwayatTarikSimpananItem(
     @field:SerializedName("amount")
     val amount: Double? = null,
 
-    @field:SerializedName("apr")
-    val apr: String? = null,
-
     @field:SerializedName("aprinfo")
-    val aprinfo: Any? = null,
+    val aprinfo: String? = null,
+
+    @field:SerializedName("apr")
+    val apr: Any? = null,
 
     @field:SerializedName("doc_num")
     val docNum: String? = null,
@@ -61,18 +58,15 @@ data class RiwayatTarikSimpananItem(
     @field:SerializedName("apr_by")
     val aprBy: Any? = null,
 
-    @field:SerializedName("modifiedinfo")
-    val modifiedinfo: Any? = null,
-
     @field:SerializedName("doc_date")
     val docDate: String? = null,
+
+    @field:SerializedName("modifiedinfo")
+    val modifiedinfo: Any? = null,
 
     @field:SerializedName("pay_type")
     val payType: String? = null,
 
     @field:SerializedName("ket")
-    val ket: Any? = null,
-
-    @field:SerializedName("status")
-    val status: Any? = null
+    val ket: String? = null
 )

@@ -48,65 +48,110 @@ class DetailHistoryPinjamanActivity : AppCompatActivity() {
             val tgl = res.data?.get(0)?.docDate.toString()
             val nominalPinjaman = res.data?.get(0)?.amount.toString()
             val nominalAdminstrasi = res.data?.get(0)?.amAdm.toString()
-            val nominalAsuransi = res.data?.get(0)?.asuransi.toString()
-            val nominalProvisi = res.data?.get(0)?.provisi.toString()
-            val nominalDanaDiterima = res.data?.get(0)?.danaCair.toString()
-            val nominalPotPribadi = res.data?.get(0)?.potPribadi.toString()
             val jumlahTenor = res.data?.get(0)?.term.toString()
-            val nominalJasa = res.data?.get(0)?.jasa.toString()
-            val nominalTotal = res.data?.get(0)?.totAm.toString()
-            val nominalAngsuranPerBulan = res.data?.get(0)?.angsuran.toString()
-            val nominalTPot = res.data?.get(0)?.gaji.toString()
             val statusPinjaman = res.data?.get(0)?.apr.toString().first()
-            val idUser =res.data?.get(0)?.mbrMbrid.toString()
-
+            val tipePotongan = res.data?.get(0)?.loanCode.toString()
+            val persenanAdmin = res.data?.get(0)?.intAdm.toString()
             val parsedTgl = FormatterAngka.dateFormatForDetail(tgl)
             val parsedNominalPinjaman =
                 FormatterAngka.formatterAngkaRibuanDouble(nominalPinjaman.toDouble())
-            val parsedProvisi = FormatterAngka.formatterAngkaRibuanDouble(nominalProvisi.toDouble())
-            val parsedNominalAdministrasi =
+            val parsedNominalJasa =
                 FormatterAngka.formatterAngkaRibuanDouble(nominalAdminstrasi.toDouble())
-            val parsedNominalAsuransi =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalAsuransi.toDouble())
-            val parsedNominalDanaDiterima =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalDanaDiterima.toDouble())
-            val parsedNominalPotPribadi =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalPotPribadi.toDouble())
             val parsedTenor = FormatterAngka.penghilangNilaiKoma(jumlahTenor)
-            val formattedNominalJasa = FormatterAngka.formatterAngkaRibuanDouble(nominalJasa.toDouble())
-            val parsedNominalTotal =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalTotal.toDouble())
-            val parsedAngsuranPerBulan =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalAngsuranPerBulan.toDouble())
-            val parsedNominalTPot =
-                FormatterAngka.formatterAngkaRibuanDouble(nominalTPot.toDouble())
+            val persenanJasa = res.data?.get(0)?.interest.toString()
+            val angsBln =res.data?.get(0)?.instal.toString()
+
+            val danaDiterima = res.data?.get(0)?.amount.toString()
 
             when (statusPinjaman) {
-                'R' -> binding.tvStatusPinjaman.text ="Ditolak"
-                'A' -> binding.tvStatusPinjaman.text ="Diterima"
-                else -> binding.tvStatusPinjaman.text ="On Process"
+                'R' -> binding.tvStatusPinjaman.text = "Ditolak"
+                'A' -> binding.tvStatusPinjaman.text = "Diterima"
+                else -> binding.tvStatusPinjaman.text = "On Process"
+            }
+
+            when (tipePotongan) {
+                "AUTD" -> {
+                    binding.tvTipePinjaman.text = "Auto Debet"
+                }
+
+                "BAT" -> {
+                    binding.tvTipePinjaman.text = "BAT"
+                }
+
+                "BNS" -> {
+                    binding.tvTipePinjaman.text = "Bonus"
+                }
+
+                "COS" -> {
+                    binding.tvTipePinjaman.text = "COS"
+                }
+
+                "CUTI" -> {
+                    binding.tvTipePinjaman.text = "Cuti"
+                }
+
+                "DIS" -> {
+                    binding.tvTipePinjaman.text = "DIS"
+                }
+
+                "FGS" -> {
+                    binding.tvTipePinjaman.text = "Fungsional"
+                }
+
+                "GAJI" -> {
+                    binding.tvTipePinjaman.text = "Gaji"
+                }
+
+                "GJ13" -> {
+                    binding.tvTipePinjaman.text = "Gaji 13"
+                }
+
+                "INST" -> {
+                    binding.tvTipePinjaman.text = "INSENTIF"
+                }
+
+                "MBL" -> {
+                    binding.tvTipePinjaman.text = "Mobilitas"
+                }
+
+                "PMS" -> {
+                    binding.tvTipePinjaman.text = "PMS"
+                }
+
+                "PPAN" -> {
+                    binding.tvTipePinjaman.text = "Pinjaman Jangka Panjang"
+                }
+
+                "SHF" -> {
+                    binding.tvTipePinjaman.text = "SHIFT"
+                }
+
+                "THR" -> {
+                    binding.tvTipePinjaman.text = "THR"
+                }
+
+                "TNBL" -> {
+                    binding.tvTipePinjaman.text = "Tunai Bulanan"
+                }
+
+                "TNTH" -> {
+                    binding.tvTipePinjaman.text = "Tunai Tahunan"
+                }
+
+                "TRN" -> {
+                    binding.tvTipePinjaman.text = "Transport"
+                }
             }
 
             binding.tvTgl.text = parsedTgl
             binding.tvNoRef.text = res.data?.get(0)?.docNum
-            binding.tvTipePinjaman.text = res.data?.get(0)?.pjmCode
             binding.tvNominaJumlahPinjaman.text = parsedNominalPinjaman
-            binding.tvNominalBiayaAdministrasi.text = parsedNominalAdministrasi
-            binding.tvNominalAsuransi.text = parsedNominalAsuransi
-            binding.tvNominalProvinsi.text = parsedProvisi
-            binding.tvNominalDanaDiterima.text = parsedNominalDanaDiterima
-            binding.tvTipePinjamanInDetail.text = res.data?.get(0)?.pjmCode
-            binding.tvTipePotongan.text = res.data?.get(0)?.loanCode
-            binding.tvNominalPot.text = parsedNominalTPot
-            binding.tvNominalPotPribadi.text = parsedNominalPotPribadi
-            binding.tvNominaJumlahPinjaman.text = parsedNominalPinjaman
+            binding.tvNominalJasa.text = parsedNominalJasa
+            binding.tvNominalAdministrasi.text = persenanAdmin
+            binding.tvNominalJasa.text = persenanJasa
+            binding.tvNominalDanaDiterima.text = FormatterAngka.formatterNilaiUangIndonesia(danaDiterima.toDouble())
             binding.tvTenor.text = parsedTenor
-            binding.tvNominalJmlPinjaman.text = parsedNominalPinjaman
-            binding.tvNominalJumlahJasa.text = formattedNominalJasa
-            binding.tvNominalTotal.text = parsedNominalTotal
-            binding.tvAngsuranPerBln.text = parsedAngsuranPerBulan
-            binding.tvNamaMember.text = res.data?.get(0)?.name
-            binding.tvIDMember.text =idUser
+            binding.tvNominalAngsBln.text = FormatterAngka.formatterNilaiUangIndonesia(angsBln.toDouble())
         }
     }
 
@@ -120,11 +165,11 @@ class DetailHistoryPinjamanActivity : AppCompatActivity() {
         if (isLoading) {
             binding.progressBar.visibility = View.VISIBLE
             binding.cardStatusHistoryPinjaman.visibility = View.GONE
-            binding.cardNominalDetail.visibility = View.GONE
+//            binding.cardNominalDetail.visibility = View.GONE
         } else {
             binding.progressBar.visibility = View.GONE
             binding.cardStatusHistoryPinjaman.visibility = View.VISIBLE
-            binding.cardNominalDetail.visibility = View.VISIBLE
+//            binding.cardNominalDetail.visibility = View.VISIBLE
         }
     }
 

@@ -4,15 +4,24 @@ import com.google.gson.annotations.SerializedName
 
 data class TarikNominalSimpananResponse(
 
-	@field:SerializedName("docnum")
-	val docnum: String? = null,
-
 	@field:SerializedName("code")
 	val code: Int? = null,
 
-	@field:SerializedName("message")
-	val message: String? = null,
+	@field:SerializedName("data")
+	val data: TarikNominalSimpananData? = null,
 
-	@field:SerializedName("details")
-	val details: String? =null
+	@field:SerializedName("message")
+	val message: String? = null
+)
+
+data class TarikNominalSimpananData(
+
+	@field:SerializedName("trans_date")
+	val transDate: String? = null,
+
+	@field:SerializedName("doc_num")
+	val docNum: String? = null,
+
+	@field:SerializedName("doc_date")
+	val docDate: String? = null
 )

@@ -93,7 +93,7 @@ class HomeActivity : AppCompatActivity() {
     private fun getImageData() {
         homeViewModel.getSession().observe(this) {
             lifecycleScope.launch {
-                homeViewModel.getUserImage(it.username)
+                homeViewModel.getUserImage(it.username, ApiConfig.WORKSPACE_CODE_KOPKAR)
             }
         }
 
@@ -150,9 +150,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-//    private fun checkSavedSession() {
-//        homeViewModel.checkSavedLoginData()
-//    }
 
     private fun getRvData() {
         binding.rvRiwayatTransaksiHome.layoutManager = LinearLayoutManager(this)
@@ -164,12 +161,6 @@ class HomeActivity : AppCompatActivity() {
                 binding.rvRiwayatTransaksiHome.adapter = adapter
             }
         }
-
-//        binding.rvRiwayatTransaksiHome.layoutManager = LinearLayoutManager(this)
-//        list.addAll(getRiwayatTransaksiData())
-//        val adapter = RiwayatTransaksiHomeAdapter()
-//        adapter.submitList(list)
-//        binding.rvRiwayatTransaksiHome.adapter = adapter
     }
 
 

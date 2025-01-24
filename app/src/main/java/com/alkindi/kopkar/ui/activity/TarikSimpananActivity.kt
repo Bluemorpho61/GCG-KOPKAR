@@ -3,13 +3,12 @@ package com.alkindi.kopkar.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.alkindi.kopkar.R
 import com.alkindi.kopkar.data.local.model.SimpTypeWNominal
 import com.alkindi.kopkar.data.model.ViewModelFactory
@@ -19,6 +18,7 @@ import com.alkindi.kopkar.ui.fragment.RiwayatTransaksiFragment
 import com.alkindi.kopkar.ui.viewmodel.TarikSimpananViewModel
 import com.alkindi.kopkar.utils.AndroidUIHelper
 import com.alkindi.kopkar.utils.FormatterAngka
+import kotlinx.coroutines.launch
 
 class TarikSimpananActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTarikSimpananBinding
@@ -44,15 +44,14 @@ class TarikSimpananActivity : AppCompatActivity() {
         }
 
         checkLoading()
-        spinnerLogic()
+        fetchNominalSimpanan()
         getUserID()
-        fetchUserNominal()
+        showUserNominal()
         supportFragmentManager.beginTransaction()
             .add(R.id.fragmentDetailSimpanan, RiwayatTransaksiFragment()).commit()
 
         binding.btnTarikSimpanan.setOnClickListener {
             val extraData = SimpTypeWNominal(
-                binding.spinnerTipeSimpanan.selectedItem.toString(),
                 binding.tvNominalSimpananSukarela.text.toString()
             )
 
@@ -89,77 +88,22 @@ class TarikSimpananActivity : AppCompatActivity() {
 
     }
 
-    private fun spinnerLogic() {
-        tarikSimpananViewModel.dataSimpananUser.observe(this) {
-            if (it.code == 500) {
+    private fun fetchNominalSimpanan() {
+        tarikSimpananViewModel.dataSimpananUser.observe(this) { res ->
+            if (res.code == 500) {
                 AndroidUIHelper.showAlertDialog(
                     this,
                     "Error",
                     "Gagal mengambil data dikarenakan tidak dapat terhubung dengan API. Silahkan hubungi administrator"
                 )
             } else {
-                val spinnerItems = listOf(
-                    "Simpanan Sukarela",
-                    "Simpanan Khusus",
-                    "Simpanan Khusus Pagu",
-                    "Simpanan Pokok",
-                    "Simpanan Wajib"
-                )
-                val nominalData = mapOf(
-                    "Simpanan Sukarela" to it.data?.get(0)?.sskr.toString(),
-                    "Simpanan Khusus" to it.data?.get(0)?.sskp.toString(),
-                    "Simpanan Khusus Pagu" to it.data?.get(0)?.sskq.toString(),
-                    "Simpanan Pokok" to it.data?.get(0)?.sspo?.toString(),
-                    "Simpanan Wajib" to it.data?.get(0)?.sswj?.toString()
-                )
-                val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerItems)
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                binding.spinnerTipeSimpanan.adapter = adapter
-
-                binding.spinnerTipeSimpanan.onItemSelectedListener =
-                    object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            parent: AdapterView<*>?,
-                            view: View?,
-                            position: Int,
-                            id: Long
-                        ) {
-                            val selectedItem = parent?.getItemAtPosition(position).toString()
-                            passDataToFragment(selectedItem)
-
-                            val nominal = nominalData[selectedItem] ?: "0"
-                            val formattedNominal =
-                                FormatterAngka.formatterAngkaRibuanDouble(nominal.toDouble())
-                            binding.tvNominalSimpananSukarela.text = formattedNominal
-                            nominalValue = formattedNominal
-                            when (selectedItem) {
-                                "Simpanan Pokok" -> {
-                                    binding.btnTarikSimpanan.visibility = View.GONE
-                                }
-
-                                "Simpanan Wajib" -> {
-                                    binding.btnTarikSimpanan.visibility = View.GONE
-                                }
-
-                                "Simpanan Khusus Pagu" -> {
-                                    binding.btnTarikSimpanan.visibility = View.VISIBLE
-                                }
-
-                                "Simpanan Khusus" -> {
-                                    binding.btnTarikSimpanan.visibility = View.VISIBLE
-                                }
-
-                                "Simpanan Sukarela" -> {
-                                    binding.btnTarikSimpanan.visibility = View.VISIBLE
-                                }
-                            }
-                        }
-
-                        override fun onNothingSelected(p0: AdapterView<*>?) {
-                            TODO("Not yet implemented")
-                        }
-                    }
+                val nominalSimpananTersisa = res.data?.get(0)?.sskr.toString()
+                val formattedNominal =
+                    FormatterAngka.formatterAngkaRibuanDouble(nominalSimpananTersisa.toDouble())
+                nominalValue = formattedNominal
+                binding.tvNominalSimpananSukarela.text = nominalValue
             }
+
         }
 
     }
@@ -176,7 +120,7 @@ class TarikSimpananActivity : AppCompatActivity() {
             .commit()
     }
 
-    private fun fetchUserNominal() {
+    private fun showUserNominal() {
         tarikSimpananViewModel.dataSimpananUser.observe(this) {
             if (it.code == 500) {
                 AndroidUIHelper.showAlertDialog(
@@ -185,7 +129,7 @@ class TarikSimpananActivity : AppCompatActivity() {
                     "Gagal mengambil data dikarenakan tidak dapat terhubung dengan API. Silahkan hubungi administrator"
                 )
             } else {
-                spinnerLogic()  // Call the spinner logic here after data is fetched
+                fetchNominalSimpanan()
             }
         }
     }
@@ -208,7 +152,9 @@ class TarikSimpananActivity : AppCompatActivity() {
     private fun getUserID() {
         tarikSimpananViewModel.getSession().observe(this) {
             userID = it.username
-            tarikSimpananViewModel.getDataSimpananUser(userID)
+            lifecycleScope.launch {
+                tarikSimpananViewModel.getDataSimpananUser(userID)
+            }
         }
     }
 

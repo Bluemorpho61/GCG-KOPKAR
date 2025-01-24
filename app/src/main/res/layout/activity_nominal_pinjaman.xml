@@ -79,14 +79,21 @@
                         android:layout_height="match_parent"
                         android:padding="10dp">
 
-                        <de.hdodenhof.circleimageview.CircleImageView
+                        <com.alkindi.kopkar.ui.customview.CircleTextView
                             android:id="@+id/imTipePinjaman"
                             android:layout_width="45dp"
                             android:layout_height="45dp"
-                            app:layout_constraintBottom_toTopOf="@id/fieldTambahan"
-                            android:src="@drawable/tipin_japan"
+                            app:borderColor="@android:color/darker_gray"
+                            app:borderWidth="1dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:shadowColor="@android:color/darker_gray"
+                            app:shadowDx="0dp"
+                            app:shadowDy="1dp"
+                            app:shadowRadius="1dp"
+                            app:text="Hello World"
+                            app:textColor="@android:color/black"
+                            app:textSize="7sp" />
 
                         <TextView
                             android:id="@+id/tvTipePinjaman"
@@ -100,260 +107,35 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/tvTipePotongan"
+                            android:id="@+id/textView6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Gaji"
-                            android:textColor="@color/abu_abu_pinjaman"
-                            android:textSize="13sp"
-                            app:layout_constraintStart_toEndOf="@id/imTipePinjaman"
-                            app:layout_constraintTop_toBottomOf="@id/tvTipePinjaman" />
-
-                        <LinearLayout
-                            android:id="@+id/fieldTambahan"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:orientation="vertical"
-                            android:layout_marginTop="25dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imTipePinjaman">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="Angsuran / Bulan"
-                                android:textSize="14sp" />
-                            <com.alkindi.kopkar.ui.customview.CustomEditTextMoneyInput
-                                android:id="@+id/edtAngsuran"
-                                android:layout_width="200dp"
-                                android:inputType="number"
-                                android:hint="Masukkan nominal "
-                                android:layout_height="wrap_content" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="Jumlah Jasa"
-                                android:textSize="14sp" />
-                            <com.alkindi.kopkar.ui.customview.CustomEditTextMoneyInput
-                                android:id="@+id/edtJasa"
-                                android:layout_width="200dp"
-                                android:inputType="number"
-                                android:hint="Masukkan nominal "
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="8dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cardTipePinjaman">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="Tenor: "
-                            android:textSize="15sp" />
+                            app:layout_constraintStart_toEndOf="@+id/imTipePinjaman"
+                            app:layout_constraintTop_toBottomOf="@+id/tvTipePinjaman" />
 
                         <TextView
-                            android:id="@+id/tvJmlTenor"
+                            android:id="@+id/tvTenorPinjaman"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="36"
                             android:textColor="@color/blue_font"
-                            android:textSize="15sp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="20dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Jumlah"
-                            android:textAlignment="center"
-                            android:textSize="20sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <LinearLayout
-                            android:id="@+id/layoutNominalPinjaman"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/textView3">
-
-                            <ImageButton
-                                android:id="@+id/btnKrgPinjaman"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:src="@drawable/kurangi_pinjaman" />
-
-                            <Space
-                                android:layout_width="25dp"
-                                android:layout_height="wrap_content" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_extrabold"
-                                android:text="Rp."
-                                android:textSize="22sp" />
-
-                            <TextView
-                                android:id="@+id/tvJumlahNominal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_extrabold"
-                                android:text="0"
-                                android:textSize="22sp" />
-
-                            <Space
-                                android:layout_width="25dp"
-                                android:layout_height="wrap_content" />
-
-                            <ImageButton
-                                android:id="@+id/btnTambahPinjaman"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:src="@drawable/tambah_pinjaman" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Rekomendasi Transaksi"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layoutNominalPinjaman" />
-
-                        <LinearLayout
-                            android:id="@+id/linearLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/textView4">
-
-                            <HorizontalScrollView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:scrollbars="none">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-                                    <com.google.android.material.chip.ChipGroup
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        app:singleSelection="true">
-
-                                        <com.google.android.material.chip.Chip
-                                            android:id="@+id/chip1jt"
-                                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Rp1.000.000" />
-
-                                        <com.google.android.material.chip.Chip
-                                            android:id="@+id/chip5jt"
-                                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Rp5.000.000" />
-
-                                        <com.google.android.material.chip.Chip
-                                            android:id="@+id/chip10jt"
-                                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Rp10.000.000" />
-                                    </com.google.android.material.chip.ChipGroup>
-                                </LinearLayout>
-                            </HorizontalScrollView>
-                        </LinearLayout>
-
-                        <Button
-                            android:id="@+id/btnHitungBiaya"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Hitung Biaya "
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-                        <ProgressBar
-                            android:id="@+id/progressBarCalculate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btnHitungBiaya"
-                            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
+                            app:layout_constraintStart_toEndOf="@+id/textView6"
+                            app:layout_constraintTop_toBottomOf="@+id/tvTipePinjaman" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
+
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardviewRincian"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="10dp"
-
+                    android:visibility="visible"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="8dp"
                     app:layout_constraintTop_toBottomOf="@id/cardView2">
@@ -368,14 +150,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
-                            android:text="Informasi Rincian Potongan"
+                            android:text="Informasi Rincian Biaya "
                             android:textSize="16sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:justificationMode="inter_word"
-                            android:text="Berikut meurpakan rincian potongan dari transaksi pengajuan pinjaman. Silahkan periksa terlebih dahulu sebelum anda melanjutkan"
+                            android:text="@string/txt_disclaimer_pinjaman"
                             android:textColor="@color/abu_abu_pinjaman" />
 
                         <TextView
@@ -384,10 +166,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="Simpanan Pagu" />
+                            android:text="Jasa/Bulan(%)" />
 
                         <EditText
-                            android:id="@+id/edtSimpananPagu"
+                            android:id="@+id/edtJasaBln"
                             android:layout_width="280dp"
                             android:layout_height="wrap_content"
                             android:editable="false"
@@ -398,80 +180,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="Administrasi" />
+                            android:text="Admin(%)" />
 
                         <EditText
                             android:id="@+id/edtAdministrasi"
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:editable="false"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvAsuransi"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Asuransi" />
-
-                        <EditText
-                            android:id="@+id/edtAsuransi"
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:editable="false"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvProvisi"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Provisi" />
-
-                        <EditText
-                            android:id="@+id/edtProvisi"
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:editable="false"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvJmlJasa"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Jumlah Jasa" />
-
-                        <EditText
-                            android:id="@+id/edtJmlJasa"
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:editable="false"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvTotal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Total" />
-
-                        <EditText
-                            android:id="@+id/edtJmlTotal"
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:editable="false"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvAngsBln"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Angs/Bln" />
-
-                        <EditText
-                            android:id="@+id/edtAngsBln"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:editable="false"
@@ -491,18 +203,41 @@
                             android:editable="false"
                             android:textStyle="bold" />
 
+                        <TextView
+                            android:id="@+id/tvAsuransi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Angs/Bulan" />
+
+                        <EditText
+                            android:id="@+id/edtAngsBln"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:editable="false"
+                            android:textStyle="bold" />
+
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="end">
 
-                            <ProgressBar
-                                android:id="@+id/progressBarAjukanSimpanan"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/btnConfirmPinjaman"
@@ -513,7 +248,6 @@
                     android:fontFamily="@font/poppins_bold"
                     android:text="Konfirmasi Pinjaman"
                     android:textSize="20sp"
-                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardviewRincian" />

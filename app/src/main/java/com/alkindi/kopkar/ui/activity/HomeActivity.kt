@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alkindi.kopkar.R
 import com.alkindi.kopkar.data.model.ViewModelFactory
 import com.alkindi.kopkar.data.remote.customizednetworkingclass.ImageLoaderCustom
 import com.alkindi.kopkar.data.remote.response.RiwayatTransaksiItem
@@ -31,6 +32,9 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var userID: String
     private var pressedBack = false
     private lateinit var binding: ActivityHomeBinding
+    private var nominalPinjaman: String? = null
+
+    private var isNominalVisible = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -50,6 +54,7 @@ class HomeActivity : AppCompatActivity() {
         getImageData()
         showUserImage()
         homeViewModel.checkSavedLoginData()
+
 
         binding.btnPersonalData.setOnClickListener {
             val toPersonalData = Intent(this@HomeActivity, PersonalDataActivity::class.java)
@@ -75,6 +80,9 @@ class HomeActivity : AppCompatActivity() {
             val toProfile = Intent(this@HomeActivity, ProfileActivity::class.java)
             startActivity(toProfile)
         }
+        binding.btnNominalVisibility?.setOnClickListener {
+            toggleNominalVisibility()
+        }
 
 
         getRvData()
@@ -82,6 +90,17 @@ class HomeActivity : AppCompatActivity() {
             this,
             doubleBackPressedOnce
         )
+    }
+
+    private fun toggleNominalVisibility() {
+        if (isNominalVisible) {
+            binding.tvNominalPinjaman?.text = "............."
+            binding.btnNominalVisibility?.setImageResource(R.drawable.baseline_visibility_black)
+        } else {
+            binding.tvNominalPinjaman?.text = nominalPinjaman
+            binding.btnNominalVisibility?.setImageResource(R.drawable.baseline_visibility_off_black)
+        }
+        isNominalVisible = !isNominalVisible
     }
 
     private fun showUserImage() {
@@ -127,9 +146,10 @@ class HomeActivity : AppCompatActivity() {
     private fun showTotalPinjaman() {
         homeViewModel.totalPinjamanResponse.observe(this) { res ->
             val nominalTotalPinjaman = res.data?.sum ?: 0
-            val formattedTotalPinjaman =
-                FormatterAngka.formatterAngkaRibuan(nominalTotalPinjaman)
-            binding.tvNominalPinjaman!!.text = formattedTotalPinjaman
+            val formattedTotalPinjaman = FormatterAngka.formatterAngkaRibuan(nominalTotalPinjaman)
+            nominalPinjaman = formattedTotalPinjaman
+
+            binding.tvNominalPinjaman?.text = formattedTotalPinjaman
         }
     }
 

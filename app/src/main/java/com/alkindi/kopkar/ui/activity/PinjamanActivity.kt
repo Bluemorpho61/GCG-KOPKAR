@@ -94,7 +94,6 @@ class PinjamanActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                         putExtra(NominalPinjamanActivity.EXTRA_DATA, extraData)
                         flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                     }
-
                 startActivity(toDetailPinjaman)
             } else {
                 AndroidUIHelper.showAlertDialog(
